@@ -9,6 +9,8 @@ import { deriveBookingStatus, canCancelBooking } from '../src/shared/status.js';
 export const api = express.Router();
 api.use(express.json({ limit: '20kb' }));
 
+api.get('/health', (req, res) => res.json({ ok: true }));
+
 // pg returns NUMERIC columns as strings (to avoid float precision loss), so every
 // money value is converted explicitly before it reaches the client.
 const toFlight = (r) => ({
